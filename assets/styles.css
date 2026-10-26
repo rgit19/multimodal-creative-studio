@@ -1,0 +1,109 @@
+/* OmniCraft Studio - Modern UI Theme & Enhancements */
+
+/* Card Container Styling */
+.stCard {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+/* Metric Pill Badges */
+.badge-model {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+}
+
+.badge-speed {
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.badge-modality {
+    display: inline-block;
+    background: rgba(244, 63, 94, 0.15);
+    color: #f43f5e;
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+/* Hero Header */
+.hero-header {
+    text-align: center;
+    padding: 1.5rem 0 2rem 0;
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.12) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #6366f1 0%, #ec4899 50%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.4rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Feature Showcase Cards */
+.feature-box {
+    border: 1px solid rgba(226, 232, 240, 0.15);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.feature-box h4 {
+    margin-top: 6px;
+    margin-bottom: 4px;
+    font-size: 1.05rem;
+}
+
+.feature-box p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* Streamlit Native Overrides */
+div[data-testid="stSidebar"] {
+    background-color: #0b0f17;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+div.stButton > button {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+div.stButton > button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
