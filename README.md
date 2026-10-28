@@ -150,7 +150,7 @@ python3 -m py_compile app.py modules/*.py tests/*.py
 git diff --check
 ```
 
-Results for the final QA pass: **31 unit and Streamlit AppTest checks passed**; `pip check` reported no broken requirements; compilation and diff whitespace checks passed. Provider-dependent tests use mocks. No live Gemini calls or real-provider verification were performed. The repository has no configured or installed lint tool, so no lint run is claimed.
+Results for the final QA pass: **34 unit and Streamlit AppTest checks passed**; `pip check` reported no broken requirements; compilation and diff whitespace checks passed. Provider-dependent tests use mocks. No live Gemini calls or real-provider verification were performed. The repository has no configured or installed lint tool, so no lint run is claimed.
 
 ---
 

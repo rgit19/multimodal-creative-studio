@@ -1,14 +1,48 @@
-/* OmniCraft Studio - Modern UI Theme & Enhancements */
+/* Nexa AI - Modern UI Theme & Enhancements */
+/* Brand: Nexa AI | Tagline: Create. Code. Imagine. */
 
 /* Card Container Styling */
-.stCard {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+.stCard, .nexa-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 18px 22px;
     margin-bottom: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s ease;
+}
+
+.stCard:hover, .nexa-card:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Sidebar Brand Styling */
+.nexa-sidebar-brand {
+    padding: 0.5rem 0.2rem 1.2rem 0.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 1rem;
+}
+
+.nexa-sidebar-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.nexa-sidebar-tagline {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 /* Metric Pill Badges */
@@ -16,7 +50,7 @@
     display: inline-block;
     background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
     color: #ffffff;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     padding: 4px 12px;
     border-radius: 20px;
@@ -28,7 +62,7 @@
     background: rgba(16, 185, 129, 0.15);
     color: #10b981;
     border: 1px solid rgba(16, 185, 129, 0.3);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     padding: 4px 12px;
     border-radius: 20px;
@@ -39,32 +73,78 @@
     background: rgba(244, 63, 94, 0.15);
     color: #f43f5e;
     border: 1px solid rgba(244, 63, 94, 0.3);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     padding: 4px 12px;
     border-radius: 20px;
 }
 
-/* Hero Header */
+.badge-status-online {
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+}
+
+.badge-status-offline {
+    display: inline-block;
+    background: rgba(244, 63, 94, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+}
+
+/* Page Header */
+.nexa-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nexa-title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #6366f1 0%, #ec4899 50%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.25rem;
+}
+
+.nexa-subtitle {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Hero Header (Backward Compatibility) */
 .hero-header {
     text-align: center;
-    padding: 1.5rem 0 2rem 0;
+    padding: 1.5rem 0 1.8rem 0;
     background: linear-gradient(180deg, rgba(99, 102, 241, 0.12) 0%, rgba(0, 0, 0, 0) 100%);
     border-radius: 16px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero-title {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
     font-weight: 800;
     background: linear-gradient(90deg, #6366f1 0%, #ec4899 50%, #f59e0b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #94a3b8;
     max-width: 650px;
     margin: 0 auto;
@@ -72,38 +152,197 @@
 
 /* Feature Showcase Cards */
 .feature-box {
-    border: 1px solid rgba(226, 232, 240, 0.15);
+    border: 1px solid rgba(226, 232, 240, 0.1);
     border-radius: 10px;
     padding: 14px;
     text-align: center;
     background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.35);
 }
 
 .feature-box h4 {
     margin-top: 6px;
     margin-bottom: 4px;
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 
 .feature-box p {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: #94a3b8;
     margin: 0;
 }
 
 /* Streamlit Native Overrides */
 div[data-testid="stSidebar"] {
-    background-color: #0b0f17;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #10101b;
+    border-right: 1px solid rgba(168, 85, 247, 0.12);
 }
 
 div.stButton > button {
     border-radius: 8px;
     font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.45rem 1rem;
     transition: all 0.2s ease-in-out;
 }
 
 div.stButton > button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    box-shadow: 0 4px 14px rgba(168, 85, 247, 0.2);
+}
+
+div[data-testid="stMetricValue"] {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* Feedback Box Styling */
+.feedback-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 18px;
+}
+
+/* Nexa chat workspace */
+.stApp {
+    background: #0b0b12;
+    color: #f5f3ff;
+}
+
+.nexa-sidebar-title {
+    background: linear-gradient(120deg, #d8b4fe 0%, #a855f7 70%, #7c3aed 100%);
+}
+
+.nexa-sidebar-tagline,
+.stCaption,
+div[data-testid="stCaptionContainer"] {
+    color: #a1a1b5;
+}
+
+section[data-testid="stMain"] > div {
+    background: #0b0b12;
+}
+
+div[data-testid="stSidebar"] button {
+    border-radius: 10px;
+    text-align: left;
+}
+
+div[data-testid="stSidebar"] button[kind="primary"],
+div[data-testid="stButton"] > button[kind="primary"],
+div[data-testid="stFormSubmitButton"] > button[kind="primary"] {
+    background: linear-gradient(115deg, #7c3aed 0%, #a855f7 100%);
+    border-color: rgba(216, 180, 254, 0.38);
+    color: #fff;
+}
+
+div[data-testid="stChatInput"] {
+    border: 1px solid rgba(168, 85, 247, 0.44);
+    border-radius: 18px;
+    background: #171725;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+div[data-testid="stChatInput"]:focus-within {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.28);
+}
+
+div[data-testid="stChatMessage"] {
+    max-width: 860px;
+    margin-inline: auto;
+    border-radius: 16px;
+    animation: nexa-message-in 180ms ease-out both;
+}
+
+div[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
+    background: linear-gradient(110deg, rgba(124, 58, 237, 0.2), rgba(168, 85, 247, 0.1));
+    border: 1px solid rgba(168, 85, 247, 0.18);
+}
+
+.chat-welcome {
+    max-width: 720px;
+    margin: clamp(2.5rem, 12vh, 7rem) auto 2rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.chat-welcome-mark {
+    display: inline-grid;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    margin-bottom: 0.8rem;
+    border: 1px solid rgba(168, 85, 247, 0.36);
+    border-radius: 16px;
+    background: radial-gradient(circle at 30% 20%, rgba(168, 85, 247, 0.28), rgba(124, 58, 237, 0.08));
+    color: #d8b4fe;
+    font-size: 1.7rem;
+}
+
+.chat-welcome h1 {
+    color: #f5f3ff;
+    font-size: clamp(1.7rem, 4vw, 2.45rem);
+    font-weight: 650;
+    letter-spacing: -0.035em;
+}
+
+.chat-welcome p {
+    color: #a1a1b5;
+    font-size: 1rem;
+}
+
+div[data-testid="stChatInput"] textarea {
+    color: #f5f3ff;
+}
+
+div[data-testid="stTextInput"] input:focus,
+div[data-testid="stTextArea"] textarea:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.25);
+}
+
+@keyframes nexa-message-in {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    section[data-testid="stMain"] > div {
+        padding-inline: 0.75rem;
+    }
+
+    div[data-testid="stChatMessage"] {
+        padding-inline: 0.25rem;
+    }
+
+    .chat-welcome {
+        margin-top: 2rem;
+        padding-inline: 0.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

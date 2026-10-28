@@ -10,14 +10,22 @@ env/
 
 # Environment variables & secrets
 .env
+.env.*
+*.env
 *.env.local
+!.env.example
+secrets.toml
+.streamlit/secrets.toml
+*.pem
+*.key
 
 # OS generated files
 .DS_Store
 Thumbs.db
 
 # Streamlit runtime data
-.streamlit/
+!.streamlit/
+!.streamlit/config.toml
 
 # Node modules / temp files
 node_modules/

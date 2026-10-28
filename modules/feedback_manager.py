@@ -67,6 +67,130 @@ class FeedbackManager:
         self._save_history()
         return record_id
 
+    def add_chat_turn(
+        self,
+        conversation_id: str,
+        title: str,
+        turn_index: int,
+        prompt: str,
+        response: str,
+        model_name: str,
+    ) -> str:
+        """Persist a completed chat turn in the existing generation history."""
+        record_id = self.add_generation(
+            modality="chat",
+            prompt=prompt,
+            output=response,
+            model_name=model_name,
+            parameters={
+                "conversation_id": conversation_id,
+                "conversation_title": title,
+                "turn_index": turn_index,
+                "updated_at": datetime.now().astimezone().isoformat(),
+            },
+        )
+        return record_id
+
+    def get_chat_conversations(self, limit: int = 100) -> List[Dict[str, Any]]:
+        """Return recent saved conversations, newest first."""
+        conversations: Dict[str, Dict[str, Any]] = {}
+        for item in self.history:
+            parameters = item.get("parameters") or {}
+            conversation_id = parameters.get("conversation_id")
+            if item.get("modality") != "chat" or not conversation_id:
+                continue
+
+            updated_at = parameters.get("updated_at", item.get("timestamp", ""))
+            current = conversations.get(conversation_id)
+            if current is None or updated_at > current["updated_at"]:
+                conversations[conversation_id] = {
+                    "id": conversation_id,
+                    "title": parameters.get("conversation_title") or item["prompt"][:48],
+                    "updated_at": updated_at,
+                    "preview": item["prompt"],
+                }
+
+        return sorted(
+            conversations.values(),
+            key=lambda conversation: conversation["updated_at"],
+            reverse=True,
+        )[:limit]
+
+    def get_chat_messages(self, conversation_id: str) -> List[Dict[str, Any]]:
+        """Load a conversation as ordered user and assistant messages."""
+        turns = [
+            item
+            for item in self.history
+            if item.get("modality") == "chat"
+            and (item.get("parameters") or {}).get("conversation_id")
+            == conversation_id
+        ]
+        turns.sort(key=lambda item: (item.get("parameters") or {}).get("turn_index", 0))
+
+        messages: List[Dict[str, Any]] = []
+        for turn in turns:
+            messages.extend(
+                [
+                    {"role": "user", "content": turn["prompt"]},
+                    {
+                        "role": "assistant",
+                        "content": str(turn["output"]),
+                        "record_id": turn["id"],
+                    },
+                ]
+            )
+        return messages
+
+    def rename_chat_conversation(self, conversation_id: str, title: str) -> bool:
+        """Rename all history records associated with one conversation."""
+        changed = False
+        for item in self.history:
+            parameters = item.get("parameters") or {}
+            if (
+                item.get("modality") == "chat"
+                and parameters.get("conversation_id") == conversation_id
+            ):
+                parameters["conversation_title"] = title
+                changed = True
+        if changed:
+            self._save_history()
+        return changed
+
+    def delete_chat_conversation(self, conversation_id: str) -> bool:
+        """Delete only the selected chat conversation from generation history."""
+        remaining = [
+            item
+            for item in self.history
+            if not (
+                item.get("modality") == "chat"
+                and (item.get("parameters") or {}).get("conversation_id")
+                == conversation_id
+            )
+        ]
+        changed = len(remaining) != len(self.history)
+        if changed:
+            self.history = remaining
+            self._save_history()
+        return changed
+
+    def update_chat_turn(
+        self,
+        record_id: str,
+        response: str,
+        model_name: str,
+    ) -> bool:
+        """Replace an assistant response when the user retries a chat turn."""
+        for item in self.history:
+            if item.get("id") == record_id and item.get("modality") == "chat":
+                item["output"] = response
+                item["model_name"] = model_name
+                item.setdefault("parameters", {})["updated_at"] = (
+                    datetime.now().astimezone().isoformat()
+                )
+                self._save_history()
+                return True
+        return False
+
     def update_feedback(
         self,
         record_id: str,
